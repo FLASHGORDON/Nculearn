@@ -40,7 +40,7 @@
             response.sendRedirect("index.jsp");
         }
         else user = (String) session.getAttribute("user");
-        String userName = null;
+        String userName = user;
         String sessionID = null;
         Cookie[] cookies = request.getCookies();
         if(cookies !=null){
@@ -88,7 +88,7 @@
 
 
                                     <ul id="nav-mobile" class="right hide-on-med-and-down">
-                                        <li id="dropdown_btn"><a class="dropdown-button white-text" href="#!" data-activates="dropdown1">Hi <%= u.getName() %></a></li>
+                                        <li id="dropdown_btn"><a class="dropdown-button white-text" href="#!" data-activates="dropdown1">Hi <%= (session.getAttribute("user")) %></a></li>
                                     </ul>
                                     <ul class="side-nav" id="mobile-demo1">
                                         <li>

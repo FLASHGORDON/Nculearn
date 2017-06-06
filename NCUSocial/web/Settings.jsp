@@ -3,7 +3,8 @@
     Created on : Nov 19, 2016, 2:28:23 PM
     Author     : Aashish
 --%>
-
+<%@page import="dbase.login"%>
+<%@page import="java.sql.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -41,7 +42,7 @@
 					  <div class="col l6">
 					       <br>
 					     <div class="input-field">
-						 <input type="text" id="new_username" />
+						 <input type="text" id="new_username" name="new_user" />
 						 <label for="new_username">Enter New Username</label>
 					     </div>
 					     <div id="sub_div">
@@ -54,6 +55,41 @@
 				</form>
 			   </div>
 			 </li>
+                                   <%
+             if(request.getParameter("action")!=null)
+             {
+                      String user = null;
+                      user = (String) session.getAttribute("user");
+                        
+                      String new_user=request.getParameter("new_user");
+                      
+                      try
+                        {
+
+                       
+                        String mm="update login set email='"+new_user+"' where email='"+user+"'";
+                         login db=new login();
+                            db.updateEmail(mm);
+                        
+                            
+					
+                        }
+                        catch(Exception ee){System.out.println(ee.getMessage());}
+
+
+
+            }
+                                                             
+                                                                         
+                                                                         
+   %>
+                
+                
+              
+                         
+                         
+                         
+                         
 			 <li>
 			   <div class="collapsible-header">Change Password</div>
 			   <div class="collapsible-body">
@@ -69,17 +105,17 @@
 					     </div>
 					     <br>
 					     <div class="input-field">
-						 <input type="password" id="New_pass" />
+						 <input type="password" id="New_pass" name="new_pass" />
 						 <label for="New_pass">New Password</label>
 					     </div>
 					     <br>
 					     <div class="input-field">
-						 <input type="password" id="Con_new_pass" />
+						 <input type="password" id="Con_new_pass"  />
 						 <label for="Con_new_pass">Confirm New Password</label>
 					     </div>
 					     <br>
 					     <div id="sub_div">
-						 <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+						 <button class="btn waves-effect waves-light" type="submit" name="action1">Submit
 						 </button>
 					     </div>
 					</div>
@@ -89,6 +125,41 @@
 				
 			   </div>
 			 </li>
+                         
+                         
+                         
+                                                 <%
+             if(request.getParameter("action1")!=null)
+             {
+                      String user = null;
+                      user = (String) session.getAttribute("user");
+                        
+                      String new_pass=request.getParameter("new_pass");
+                      
+                      try
+                        {
+
+                       
+                        String mm="update login set password='"+new_pass+"' where email='"+user+"'";
+                         login db=new login();
+                            db.updatePass(mm);
+                        
+                            
+					
+                        }
+                        catch(Exception ee){System.out.println(ee.getMessage());}
+
+
+
+            }
+                                                             
+                                                                         
+                                                                         
+   %>
+                         
+                         
+                         
+                         
 			 <li>
 			   <div class="collapsible-header">Change email</div>
 			   <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
